@@ -23,6 +23,16 @@ class LeadsController < ApplicationController
     end
   end
 
+  def new
+    @lead = Lead.new
+  end
+
+  def create
+    @lead = Lead.create(lead_params)
+    flash[:success] = "Lead added!"
+    redirect_to '/'
+  end
+
   def edit
     @lead = Lead.find_by(id: params[:id])
 
