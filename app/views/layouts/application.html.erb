@@ -123,19 +123,28 @@
 
       <!-- Main Section -->
       <div class="container">
-        <% if notice %>
-        <div class="alert alert-dismissible alert-success">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <h4><%= notice %></h4>
-        </div>
-        <% end %>
-        <% if alert %>
-        <div class="alert alert-dismissible alert-danger">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <h4><%= alert %></h4>
-        </div>
+        <% flash.each do |key, value| %>
+          <% if key == 'notice' %>
+            <div class="alert alert-dismissible alert-success">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <h4><%= value %></h4>
+            </div>
+          <% elsif key == 'alert' %>
+            <div class="alert alert-dismissible alert-danger">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <h4><%= value %></h4>
+            </div>
+          <% else %>
+            <div class="alert alert-<%= key %> alert-dismissible" >
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <h4><%= value %></h4>
+            </div>
+          <% end %>
         <% end %>
       </div>
+
+      
+
       <%= yield %>
       <!-- End of Main Section -->
 
