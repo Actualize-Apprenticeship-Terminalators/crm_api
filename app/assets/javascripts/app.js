@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var app = new Vue({
     el: '#app',
     data: {
-      message: 'Hello Vue!',
       leads: [],
       time_format: "12/25/17",
       url: "https://www.google.com/"
@@ -15,7 +14,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }.bind(this));
     },
     methods: {
-
+      moment: function(date) {
+        return moment(date);
+      }
     },
     computed: {
 
